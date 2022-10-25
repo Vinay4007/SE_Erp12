@@ -1,10 +1,5 @@
-import React from 'react'
+import React from "react";
 
-
-export default function earningData() {
-  return (
-    <div>StaffPayr</div>
-  )
+export function earningData() {
+    return <div>StaffPayr</div>;
 }
-
-

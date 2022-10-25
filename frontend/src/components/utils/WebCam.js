@@ -8,8 +8,8 @@ import { Button, Typography } from '@mui/material';
 // const WebcamComponent = () => <Webcam />;
 
 const videoConstraints = {
-    width: 600,
-    height: 800,
+    width: 1200,
+    height: 900,
     facingMode: "user"
 };
 
@@ -36,10 +36,10 @@ export function WebcamComponent () {
 
                 {image == '' ? <Webcam
                     audio={false}
-                    height={600}
+                    height={900}
                     ref={webcamRef}
                     screenshotFormat="image/jpeg"
-                    width={800}
+                    width={1200}
                     videoConstraints={videoConstraints}
                 /> : <img src={image} />}
             </div>

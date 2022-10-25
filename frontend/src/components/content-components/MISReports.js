@@ -5,7 +5,7 @@ import { LoadingPage } from './LoadingPage';
 // import { DateTimePicker } from '../utils/DateTimePicker'
 // import { FileUpload } from '../utils/FileUpload'
 // import { PdfViewer } from '../utils/PdfViewer'
-// import { WebcamComponent } from '../utils/WebCam'
+import { WebcamComponent } from '../utils/WebCam'
 
 export function MISReports() {
 
@@ -16,6 +16,7 @@ export function MISReports() {
       <WebcamComponent /> */}
       {/* <FormComponent /> */}
       <LoadingPage />
+      <WebcamComponent />
     </div>
   )
 }

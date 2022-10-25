@@ -1,0 +1,30 @@
+.wscreen {
+    position: relative;
+    width: inherit;
+    height: inherit;
+}
+
+.lnavbar {
+    position: absolute;
+    width: 20%;
+    height: inherit;
+    left: 0px;
+    top: 0px;
+}
+
+.lheader {
+    position: absolute;
+    left: 20%;
+    top: 0px;
+    width: 80%;
+    height: 25%;
+}
+
+.lcontent {
+    position: absolute;
+    left: 20%;
+    top: 25%;
+    width: 80%;
+    height: 75%;
+}
+
