@@ -1,0 +1,75 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  DEFAULT: Hello , This is a task file to automate tasks
+  APP_NAME: Unpaid
+  PREFIX: unpaid
+
+silent: true
+
+output: prefixed
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.DEFAULT}}"
+    prefix: "{{.PREFIX}}"
+
+  front-start:
+    interactive: true
+    label: front-end start
+    dir: ./frontend/
+    cmds:
+      - npm start
+      - ignore_error: true
+    desc: starts frontend (front-start)
+    summary: |
+      {{.APP_NAME}} Frontend 
+
+      Starts the frontend server at localhost:3000 
+    prefix: "{{.PREFIX}}"
+
+  back-start:
+    label: back-end start
+    dir: ./backend/
+    cmds:
+      - nodemon start
+    desc: starts backend (back-start)
+    summary: |
+      {{.APP_NAME}} Backend
+
+       Starts the backend server at localhost:4000
+    prefix: "{{.PREFIX}}"
+
+  all-start-parl:
+    label: front-end , back-end start (parallel)
+    dir: .
+    deps: [front-start, back-start]
+    desc: starts both frontend and backend (all-start-parl)
+    summary: |
+      {{.APP_NAME}}
+
+      Starts both frontend and backend parallely
+    prefix: "{{.PREFIX}}"
+
+  all-start-conc:
+    label: front-end , back-end start (concurrent)
+    dir: .
+    deps: [front-start, back-start]
+    desc: starts both frontend and backend (all-start-conc)
+    summary: |
+      {{.APP_NAME}}
+
+      Starts both frontend and backend serially
+    prefix: "{{.PREFIX}}"
+
+  loggerStart:
+    dir: .
+    preconditions:
+      - sh: "dpkg-query -l | grep  go| wc -l"
+        msg: "Oops! Go is not installed"
+    prefix: "{{.PREFIX}}"
+    cmds:
+      - go run producer.go

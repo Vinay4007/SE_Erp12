@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+option csharp_namespace = "Converter.Protos";
+
+package Converter;
+
+enum InputFileFormat {
+  option deprecated = false;
+  NotValidInputFormat = 0;
+  InPdf = 1;
+  InBiblatex = 2;
+  InBibtex = 3;
+  InCommonmark = 4;
+  InCsljson = 5;
+  InCsv = 6;
+  InDocbook = 7;
+  InDocx = 8;
+  InEpub = 9;
+  InHtml = 10;
+  InIpynb = 11;
+  InJson = 12;
+  InLatex = 13;
+  InMan = 14;
+  InMarkdown = 15;
+  InMarkdown_github = 16;
+  InMarkdown_mmd = 17;
+  InMarkdown_phpextra = 18;
+  InMarkdown_strict = 19;
+  InMediawiki = 20;
+  InRtf = 21;
+  InTikiwiki = 22;
+  InTwiki = 23;
+  InVimwiki = 24;
+}
+
+enum OutputFileFormat {
+  option allow_alias = true;
+  option deprecated = false;
+  NotValidOutputFormat = 0;
+  OutBiblatex = 1;
+  OutBibtex = 2;
+  OutCommonmark = 3;
+  OutCommonmark_x = 4;
+  OutCsljson = 5;
+  OutDocbook = 6;
+  OutDocbook4  = 7;
+  OutDocbook5  = 8;
+  OutDocx  = 9;
+  OutEpub  = 10;
+  OutEpub2  = 11;
+  OutEpub3  = 12;
+  OutHtml  = 13;
+  OutHtml4  = 14;
+  OutHtml5  = 15;
+  OutIpynb  = 16;
+  OutJson  = 17;
+  OutLatex  = 18;
+  OutMan  = 19;
+  OutMarkdown  = 20;
+  OutMarkdown_github  = 21;
+  OutMarkdown_mmd  = 22;
+  OutMarkdown_phpextra  = 23;
+  OutMarkdown_strict  = 24;
+  OutMediawiki  = 25;
+  OutPdf  = 26;
+  OutPlain  = 27;
+  OutText  = 27;
+  OutPptx  = 28;
+  OutRtf  = 29;
+  OutXwiki  = 30;
+  OutZimwiki  = 31;
+  OutImage =32;
+}
+
+enum CompressFileFormat {
+  option deprecated = false;
+  NotValidCompressFormat = 0;
+  Tar = 1;
+  Zip = 2;
+}
+
+service FileConverter {
+  rpc ConvertFromBytes(ConverterFromBytesRequest)
+      returns (ConverterFromBytesResponse);
+  rpc ConvertFromLink(ConverterFromLinkRequest)
+      returns (ConverterFromLinkResponse);
+  rpc SupportedFormats(SupportedFormatsRequest)
+      returns (SupportedFormatsResponse);
+  rpc CheckForFormat(CheckForFormatRequest) returns (CheckForFormatResponse);
+  rpc DecompressAndConvertFromBytes(DecompressAndConvertFromBytesRequest)
+      returns (DecompressAndConvertFromBytesResponse);
+}
+
+message DecompressAndConvertFromBytesRequest {
+	bytes byteStream = 1;
+	string name =2;
+	optional InputFileFormat infileformat = 3;
+	optional CompressFileFormat incompressformat=4;
+	optional OutputFileFormat outfileFormat = 5;
+	RequestMetadata metadata = 6;
+}
+
+message DecompressAndConvertFromBytesResponse {
+	bytes byteStream = 1;
+	ResponseMetadata metadata = 2;
+}
+
+message ConverterFromBytesRequest {
+  reserved 5;
+  bytes byteStream = 1;
+  optional InputFileFormat infileformat = 2;
+  optional OutputFileFormat outfileFormat = 3;
+  RequestMetadata metadata = 4;
+}
+
+message ConverterFromBytesResponse {
+  bytes byteStream = 1;
+  ResponseMetadata metadata = 2;
+}
+
+message ConverterFromLinkRequest {
+  string link = 1;
+  optional InputFileFormat infileformat = 2;
+  optional OutputFileFormat outfileFormat = 3;
+  RequestMetadata metadata = 4;
+}
+
+message ConverterFromLinkResponse {
+  bytes byteStream = 1;
+  ResponseMetadata metadata = 2;
+}
+
+// Input and output format list
+message SupportedFormatsRequest { RequestMetadata metadata = 1; }
+
+message SupportedFormatsResponse {
+  repeated string inFormats = 1;
+  repeated string outFormats = 2;
+  ResponseMetadata metadata = 3;
+}
+
+message CheckForFormatRequest {
+  string format = 1;
+  RequestMetadata metadata = 2;
+}
+
+message CheckForFormatResponse {
+  bool status = 1;
+  ResponseMetadata metadata = 2;
+}
+
+message ResponseMetadata {
+  string msg = 1;
+  map<string, string> attributes = 2;
+}
+
+message RequestMetadata {
+  string msg = 1;
+  map<string, string> attributes = 2;
+}

@@ -1,0 +1,6 @@
+
+/* Change only the alignment props - other visualizations will be done in MenuItem child component */
+.menuitem {
+    display: inline;
+    margin : 20px;
+}
