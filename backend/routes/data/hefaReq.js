@@ -80,7 +80,8 @@ let collClient; // Collection Client for <COLLECTION_NAME> Collection in <DATA_B
 const callBack = (err) => {
     if (!err) {
         collClient = db.RetrieveDatabaseConnection().collection(COLLECTION_NAME, util.ROUTER_DEFAULTS);
-        util.DebugStream(FILE_NAME, "SUCCESS", "Collection connection success", collClient.stats);
+        // util.DebugStream(FILE_NAME,"SUCCESS","Collection connection success",collClient.stats);
+        util.DebugStream(FILE_NAME, "SUCCESS", "Collection connection success", "--STATS");
     } else {
         util.ErrorStream(FILE_NAME, "CONNECTION FAILED", "Collection connection failed", err);
     }
@@ -202,19 +203,19 @@ hefaRefRouter.delete("/:hefaId/:date", (req, res) => {
     const debugText = util.RDebugText(FILE_NAME, "DELETE", ROUTER_NAME);
     console.log(debugText);
 
-    const hefaId= req.params.hefaId;
+    const hefaId = req.params.hefaId;
     const date = req.params.date;
 
-    collClient.deleteOne({hefaId:  hefaId , date : date})
-    .then(
-        (value) => {
-            console.log(util.DebugStream(FILE_NAME, "SUCCESS", "Data Deleted", value));
-            res.status(201).json(value);
-        }
-    ).catch((err) => {
-        console.log(util.ErrorStream(FILE_NAME, "DELETE", "Data not Deleted", err));
-        res.status(500).json({ error: err });
-    });
+    collClient.deleteOne({ hefaId: hefaId, date: date })
+        .then(
+            (value) => {
+                console.log(util.DebugStream(FILE_NAME, "SUCCESS", "Data Deleted", value));
+                res.status(201).json(value);
+            }
+        ).catch((err) => {
+            console.log(util.ErrorStream(FILE_NAME, "DELETE", "Data not Deleted", err));
+            res.status(500).json({ error: err });
+        });
 })
 
 module.exports = hefaRefRouter;

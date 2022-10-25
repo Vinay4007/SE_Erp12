@@ -2,7 +2,6 @@ const createError = require("http-errors");
 const express = require("express");
 const cors = require("cors");
 const bodyparser = require("body-parser");
-const cookieParser = require("cookie-parser");
 // indexBaseRouter.use(express.static(path.join(__dirname, "public")));
 
 const FILE_NAME = "index.js"
@@ -54,8 +53,7 @@ indexBaseRouter.use(function(req, res, next) {
 indexBaseRouter.use(function(err, req, res, next) {
 	// set locals, only providing error in development
 	res.locals.message = err.message;
-	res.locals.error = req.indexBaseRouter.get("env") === "development" ? err : {};
-
+	res.locals.error = req.get("env") === "development" ? err : {};
 	// render the error page
 	res.status(err.status || 500);
 });

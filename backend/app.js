@@ -1,7 +1,6 @@
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
-// var cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 const helmet = require('helmet')
@@ -20,15 +19,11 @@ const authRouter = require("./routes/authenticate");
 const utilRouter = require("./routes/utils/index");
 const indexDataRouter  = require('./routes/data/index');
 
-var app = express();
+const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(helmet());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(cors());
-// app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", authRouter);
 app.use("/data",indexDataRouter);

@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+// Log data
+// Message InitiatedBy Date Time PersonId
+
+service LoggerService { rpc StoreLog(LogInput) returns (LogOutput); }
+
+enum LOG {
+  option allow_alias = true;
+  option deprecated = false;
+  TRANSACTION = 0;
+  PAYMENT = 0;
+  NEWUSER = 1;
+  MAINTENANCE = 2;
+}
+
+message LogInput {
+  reserved 7 to 10;
+  string message = 1;
+  string initiatedBy = 2;
+  string date = 3;
+  string personId = 4;
+  string other = 5;
+  LOG type =6;
+}
+
+message LogOutput { bool stored = 1; }

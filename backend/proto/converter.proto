@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "Converter.Protos";
+
+package Converter;
+
+service FileConverter {
+	rpc ConvertFromBytes (ConverterFromBytesRequest) returns (ConverterFromBytesResponse);
+	rpc ConvertFromLink (ConverterFromLinkRequest) returns (ConverterFromLinkResponse);
+	rpc SupportedFormats (SupportedFormatsRequest) returns (SupportedFormatsResponse);
+	rpc CheckForFormat (CheckForFormatRequest) returns (CheckForFormatResponse);
+}
+
+message ConverterFromBytesRequest {
+
+}
+
+message ConverterFromBytesResponse {
+
+}
+
+message ConverterFromLinkRequest {
+
+}
+
+message ConverterFromLinkResponse {
+
+}
+
+message SupportedFormatsRequest {
+
+}
+
+message SupportedFormatsResponse {
+
+}
+
+message CheckForFormatRequest {
+
+}
+
+message CheckForFormatResponse {
+
+}

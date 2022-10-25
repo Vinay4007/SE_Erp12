@@ -17,11 +17,9 @@ const ConnectToDatabase = (callBack , dbName) => {
     MongoClient.connect(URI)
     .then((client)=>{
         dbConnection = client.db(dbName);
-        console.log(util.DebugStream(FILE_NAME,"SUCCESS","Database Connection established"));
         return callBack(); 
     })
     .catch((reason)=>{
-        console.log(util.ErrorStream(FILE_NAME,"FAILURE","Database Connection failed",reason));
         return callBack(reason);
     });
 }

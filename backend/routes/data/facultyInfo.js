@@ -39,7 +39,8 @@ let collClient;
 const callBack = (err) => {
     if (!err) {
         collClient = db.RetrieveDatabaseConnection().collection(COLLECTION_NAME, util.ROUTER_DEFAULTS);
-        util.DebugStream(FILE_NAME,"SUCCESS","Collection connection success",collClient.stats);
+        // util.DebugStream(FILE_NAME,"SUCCESS","Collection connection success",collClient.stats);
+        util.DebugStream(FILE_NAME,"SUCCESS","Collection connection success","--STATS");
     }else{
         util.ErrorStream(FILE_NAME,"CONNECTION FAILED","Collection connection failed",err);
     }

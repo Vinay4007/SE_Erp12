@@ -1,28 +1,30 @@
-// const chalk = require('chalk')
-
-// const myChalk = new Chalk({level : 2});
-// const debugChalk  =myChalk.bold.yellow ; 
-// const errorChalk = myChalk.bold.redBright ; 
-
 // Router specific
 
 // DEBUG FORMAT  :
 // <FILE_NAME> <REQUEST_TYPE> <ROUTER_NAME>
+// const udpclient = require('./kafka/client');
+const logger = require('./rpc/logClient')
 
-debugChalk = (msg) => {
-    return msg;
+const debugChalk = (msg) => {
+	return msg;
 }
 
-errorChalk = (msg) => {
-    return msg;
+const errorChalk = (msg) => {
+	return msg;
 }
 
-function RDebugText(fileName , reqType , routerName) {
-    return debugChalk(`R-DEBUG : ${fileName} ${reqType} ${routerName}`);
+function RDebugText(fileName, reqType, routerName) {
+	let msg = debugChalk(`R-DEBUG : ${fileName} ${reqType} ${routerName}`);
+	console.log(msg)
+	logger.storeLog(msg,"Nishanth","Oct-6","CS20B025","TRANSACTION")
+	// udpclient.sendMessage(msg)
 }
 
-function RErrorText(fileName,error,routerName) {
-    return errorChalk(`R-ERROR : ${fileName} ${error} ${routerName}`);
+function RErrorText(fileName, error, routerName) {
+	let msg = errorChalk(`R-ERROR : ${fileName} ${error} ${routerName}`);
+	console.log(msg)
+	logger.storeLog(msg,"Nishanth","Oct-6","CS20B025","TRANSACTION")
+	// udpclient.sendMessage(msg)
 }
 
 // Event Specific
@@ -31,19 +33,24 @@ function RErrorText(fileName,error,routerName) {
 // <FILE_NAME> <STATUS> <MESSAGE> <OUTPUT>
 
 // For event specific  debug 
-function DebugStream(fileName,status,moreInfo,output) {
-    return debugChalk(`DEBUG : ${fileName} ${status} ${moreInfo} ${output}`);
+function DebugStream(fileName, status, moreInfo, output) {
+	let msg = debugChalk(`DEBUG : ${fileName} ${status} ${moreInfo} ${output}`);
+	console.log(msg)
+	logger.storeLog(msg,"Nishanth","Oct-6","CS20B025","TRANSACTION")
+	// udpclient.sendMessage(msg)
 }
 
 // ERROR FORMAT
 // <FILE_NAME> <TYPE_OF_ERROR> <MORE_INFO> <ROUTER_NAME> 
-function ErrorStream(fileName,typeErr,errExtra,output){
-    return errorChalk(`ERROR : ${fileName} ${typeErr} ${errExtra} ${output}`);
+function ErrorStream(fileName, typeErr, errExtra, output) {
+	let msg = errorChalk(`ERROR : ${fileName} ${typeErr} ${errExtra} ${output}`);
+	console.log(msg)
+	logger.storeLog(msg,"Nishanth","Oct-6","CS20B025","TRANSACTION")
 }
 
 // Default Configuration of ROUTER's opening collection's
 const ROUTER_DEFAULTS = {
-    strict : true
+	strict: true
 }
 
-module.exports = {RErrorText , RDebugText , ErrorStream , DebugStream , ROUTER_DEFAULTS};
+module.exports = { RErrorText, RDebugText, ErrorStream, DebugStream, ROUTER_DEFAULTS };
