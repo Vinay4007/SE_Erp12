@@ -1,0 +1,9 @@
+
+  .tablebtndiv {
+    display: flex;
+    align-items: center;
+  }
+ 
+  .btngrp{
+    margin:0px 5px;
+  }
