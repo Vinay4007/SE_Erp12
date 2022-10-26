@@ -2,8 +2,6 @@ import React from "react";
 import Navbar from "../Navbar";
 import FileDownload from "js-file-download";
 import Axios from "axios";
-//import {  Link } from "react-router-dom";
-//import { NavLink } from "react-router-dom";
 function Mess1() {
   //this is general ledger component
   const download = (e) => {

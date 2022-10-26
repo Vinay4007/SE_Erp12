@@ -6,6 +6,7 @@ import { LoadingPage } from './LoadingPage';
 // import { FileUpload } from '../utils/FileUpload'
 // import { PdfViewer } from '../utils/PdfViewer'
 import { WebcamComponent } from '../utils/WebCam'
+import { ObjectDetection } from '../utils/ObjectDetection';
 
 export function MISReports() {
 
@@ -15,8 +16,9 @@ export function MISReports() {
       <FileUpload />
       <WebcamComponent /> */}
       {/* <FormComponent /> */}
-      <LoadingPage />
-      <WebcamComponent />
+      {/* <LoadingPage /> */}
+      <ObjectDetection />
+      {/* <WebcamComponent /> */}
     </div>
   )
 }
