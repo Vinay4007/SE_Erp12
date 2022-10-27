@@ -19,11 +19,14 @@ export function Home() {
                     to={`${FMLocation}`}
                     onClick={(_event) => {
                         setHeading(FMLabel);
-                        console.log("Working");
                     }}
                 >
                     {FMLabel}
                 </NavLink>
+            </div>
+                <br/><br/>
+
+            <div className={Style.lnavbar}>
                 <NavLink
                     to={`${ACLocation}`}
                     onClick={(_event) => {

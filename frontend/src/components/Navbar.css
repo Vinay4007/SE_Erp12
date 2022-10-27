@@ -1,6 +1,6 @@
 .navbar {
     background-color: #060b26;
-    height: 80px;
+    height: 10%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -15,19 +15,18 @@
   
   .nav-menu {
     background-color: #060b26;
-    width: 300px;
-    height: 100vh;
-    display: flex;
+    width: 0%;
+    height: 88%;
+    display: flex ;
     justify-content: center;
-    position: fixed;
-    top: 80px;
-    left: -100%;
-    transition: 850ms;
+    position: absolute;
+    visibility: hidden;
+    transition: 500ms;
   }
-  
+
   .nav-menu.active {
-    left: 0;
-    transition: 350ms;
+    width: 20%;
+    visibility: visible;
   }
   
   .nav-text {

@@ -179,6 +179,7 @@ export function AnimatedRoutes() {
           <Route index exact  strict element={<Logins />} />
           <Route exact strict path="logins" element={<Logins />} />
 
+<Route path = "home" element={<HomeAC/>} />
 <Route path="login" element={ <Login />} />
 {/* <Route path="/home" component={Home} /> */}
 
@@ -192,7 +193,7 @@ export function AnimatedRoutes() {
 
 <Route path="about" element={<About/>} />
 
-<Route path = "home" element={<HomeAC/>} />
+
 <Route path="transactions" element={<Gl/>} />
 <Route path="ha" element={<Ha/>} />
 <Route path="others" element={<Others/>} />

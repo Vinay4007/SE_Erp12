@@ -4,13 +4,42 @@
     height: inherit;
 }
 
-.lnavbar {
-    position: absolute;
-    width: 20%;
-    height: inherit;
-    left: 0px;
-    top: 0px;
+.lnavbar a{
+    position: relative;
+    left: -55px; 
+    transition: 0.24s;
+    padding: 15px 20px ;
+    top: 50px;
+    text-decoration: none; 
+    font-size: 24px; 
+    color: rgba(0, 0, 0, 0);
+    background-color: #00fe44;
+    border-radius: 0 6px 6px 0; 
 }
+
+.lnavbar a:hover {
+    left: 0; 
+    padding: 20px 36px;
+    color:black;
+  }
+
+/* .lnavbar a{
+    position: absolute;
+    left: 0px; 
+    padding: 20px;
+    width: 111px; 
+    height: inherit;
+    top: 10px;
+    text-decoration: none; 
+    font-size: 23px; 
+    color: rgba(0, 0, 0, 0);
+    border-radius: 0 5px 5px 0; 
+}
+
+.lnavbar a:hover {
+    left: 0; 
+    color:black;
+  } */
 
 .lheader {
     position: absolute;
